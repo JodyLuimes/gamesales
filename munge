@@ -1,0 +1,56 @@
+Step 1 – Create table
+CREATE TABLE sales_genre
+(
+Genre string,
+Global_Sales float,
+Critic_Score int
+);
+
+To check that the table was created:
+
+SELECT * FROM sales_genre LIMIT 10;
+
+Step 2 – Insert data from “Sales” into the table:
+
+INSERT OVERWRITE TABLE sales_genre
+SELECT Genre, Global_Sales, Critic_Score
+FROM sales;
+
+Check that the transformation worked:
+
+SELECT * FROM sales_genre LIMIT 10;
+
+Step 3 – mutate data to round Global Sales
+
+INSERT OVERWRITE TABLE sales_genre
+SELECT Genre, ROUND(Global_Sales,0) AS Global_Sales, Critic_Score
+FROM sales_genre;
+
+Check that the mutation worked:
+
+SELECT * FROM sales_genre LIMIT 10
+
+Step 4 – Filter to only look at Critic_Score that is greater than 0
+
+INSERT OVERWRITE TABLE sales_genre
+SELECT *
+FROM sales_genre
+WHERE Critice_Score > 0;
+
+Check that the filter worked:
+
+SELECT * FROM sales_genre LIMIT 10
+
+Step 5 – Arrange the data by Critic_Score (highest to lowest)
+
+INSERT OVERWRITE TABLE sales_genre
+SELECT *
+FROM sales_genre
+ORDER BY Critic_Score DESC;
+
+Check that the sort worked:
+
+SELECT * FROM sales_genre LIMIT 10
+
+
+
