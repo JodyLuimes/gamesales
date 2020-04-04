@@ -1,0 +1,39 @@
+1A) Average critic Score table_Correcting column from sports_critic_scofre printed in content to sports_critic_score:
+SELECT genre, AVG(Critic_Score) AS sports_critic_score
+FROM sales_genre
+WHERE genre LIKE "%Sports%";
+
+1B) Average critic score for shooter games
+SELECT genre, AVG(Critic_Score) AS shooter_critic_score
+FROM sales_genre
+WHERE genre LIKE "%Shooter%";
+
+2A) Average, min, and max global sales of all games
+
+SELECT AVG(Global_Sales) AS average_global_sales, MIN(Global_Sales) AS min_global_sales, MAX(Global_Sales) AS max_global_sales
+FROM sales_genre;
+ 
+2B) Average, min and max global sales of sports games (column name fixed from text)
+
+SELECT AVG(Global_Sales) AS average_global_sales, MIN(Global_Sales) AS min_global_sales, MAX(Global_Sales) AS max_global_sales
+FROM sales_genre
+WHERE genre LIKE "%Sports%";
+
+2C) Average, min and max global sales of shooter games
+
+SELECT AVG(Global_Sales) AS average_global_sales, MIN(Global_Sales) AS min_global_sales, MAX(Global_Sales) AS max_global_sales
+FROM sales_genre
+WHERE genre LIKE "%Shooter%";
+
+3A) Global Sales and count of games with that global_sales for Sports games
+
+SELECT Global_Sales, COUNT(Global_Sales) AS Count
+FROM sales_genre
+WHERE genre LIKE "%Sports%";
+
+3B) Global Sales and count of games with that global_sales for Shooter games
+
+SELECT Global_Sales, COUNT(Global_Sales) AS Count
+FROM sales_genre
+WHERE genre LIKE "%Shooter%";
+
